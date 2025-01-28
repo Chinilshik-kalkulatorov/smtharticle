@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{{ article.title }}</title>
+</head>
+<body>
+<h1>{{ article.title }}</h1>
+
+<!-- Если есть CKEditor контент -->
+<div>
+  {{ article.content|safe }}
+</div>
+
+<!-- Если загружен .exe -->
+{% if article.exe_file %}
+  <p>
+    Скачать файл:
+    <a href="{{ article.exe_file.url }}" download>
+      {{ article.exe_file.name }}
+    </a>
+  </p>
+{% else %}
+  <p>Файл не загружен.</p>
+{% endif %}
+</body>
+</html>
